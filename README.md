@@ -4,7 +4,7 @@ Jungle-Cook
 
 ## [Web 4 Link](https://in-info-web4.luddy.indianapolis.iu.edu/~vanrobbi/N315/book-nook/)
 
-    -Firebase setup for use on remote
+- Firebase setup for use on remote
 
 ## Features
 
