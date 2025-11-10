@@ -2,7 +2,7 @@ Jungle-Cook
 
 - Create, edit and share recipes.
 
-## [Web 4 Link](https://in-info-web4.luddy.indianapolis.iu.edu/~vanrobbi/N315/book-nook/)
+## [Web 4 Link](https://in-info-web4.luddy.indianapolis.iu.edu/~vanrobbi/N315/jungle-cook/)
 
 - Firebase setup for use on remote
 
