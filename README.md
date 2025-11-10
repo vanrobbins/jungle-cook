@@ -33,7 +33,9 @@ npm install
 ```
 
 3. Optional: setup auth with firebase
+
    See below for steps
+
 4. Start development server
 
 ```bash
