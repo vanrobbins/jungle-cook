@@ -32,7 +32,9 @@ cd jungle-cook
 npm install
 ```
 
-3. Start development server
+3. Optional: setup auth with firebase
+   See below for steps
+4. Start development server
 
 ```bash
 npm run dev
