@@ -1,0 +1,76 @@
+@use "colors" as *;
+@use "shadows" as *;
+
+/* Hamburger icon and mobile menu (fix typos and transitions) */
+.hamburger-icon {
+	display: none; /* shown only on small screens */
+	margin: 0;
+	cursor: pointer;
+	z-index: 40;
+}
+.hamburger-icon div {
+	width: 2rem;
+	height: 3px;
+	background-color: $color-fg;
+	margin: 6px 3px;
+	transition: 0.4s;
+}
+.bg-overlay {
+	/* make overlay cover the viewport and not depend on a positioned ancestor */
+	position: fixed;
+	inset: 0; /* top:0; right:0; bottom:0; left:0 */
+	display: none;
+	opacity: 0;
+	background-color: $color-bg-overlay;
+	transition: opacity ease-in 400ms;
+	z-index: 25; /* sit behind the mobile menu (z-index:30) */
+}
+
+.open {
+	.bg-overlay {
+		display: block;
+		opacity: 1;
+	}
+	.bar1 {
+		/* Open state transforms for three bars */
+		transform: rotate(45deg) translate(6px, 6px);
+	}
+	.bar2 {
+		opacity: 0;
+		transform: translateX(-20px);
+	}
+	.bar3 {
+		transform: rotate(-45deg) translate(6px, -6px);
+	}
+	.mobile-menu {
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+		align-items: center;
+		justify-content: flex-start;
+		opacity: 1;
+		.login-btn {
+			height: 2.5rem;
+		}
+	}
+}
+.mobile-menu {
+	display: none;
+	opacity: 0;
+	position: absolute;
+	top: 50px;
+	left: 0;
+	height: calc(100vh - 50px);
+	padding-top: 8px;
+	z-index: 30;
+	transition: opacity ease 400ms;
+}
+@media only screen and (max-width: 56.25rem) {
+	header nav {
+		display: none;
+	}
+	/* show the hamburger (use class selector - matches the HTML) */
+	.hamburger-icon {
+		display: block;
+	}
+}

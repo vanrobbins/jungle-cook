@@ -1,0 +1,180 @@
+@use "colors" as *;
+@use "shadows" as *;
+header {
+	color: $color-fg;
+	margin-top: 2.5rem;
+	padding: 0 4vw;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 1rem;
+	width: 100%;
+	height: 3.4375rem;
+	font-size: 2rem;
+	font-weight: 400;
+	padding-bottom: 0.1rem;
+	#logo {
+		align-self: flex-end;
+		height: 3.4375rem;
+		position: relative;
+		/* center the logo text horizontally and vertically */
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		user-select: none;
+		.logoText {
+			margin-bottom: 0;
+			position: relative; /* keep above absolute circles */
+			z-index: 3;
+		}
+		.oneCircLogo {
+			box-shadow: $shadow-light;
+			position: absolute;
+			aspect-ratio: 1;
+			border-radius: 50%;
+			background-color: $color-brand-blue;
+			width: 19%;
+			top: 0;
+			left: 0;
+		}
+		.twoCircLogo {
+			box-shadow: $shadow-light;
+			position: absolute;
+			aspect-ratio: 1;
+			border-radius: 50%;
+			background-color: $color-brand-yellow;
+			width: 18%;
+			bottom: 16.666666%;
+			left: 15.6%;
+		}
+		.threeCircLogo {
+			box-shadow: $shadow-light;
+			position: absolute;
+			aspect-ratio: 1;
+			border-radius: 50%;
+			background-color: $color-brand-green;
+			height: 98%;
+			bottom: 0;
+			left: 31.75%;
+		}
+		.fourCircLogo {
+			box-shadow: $shadow-light;
+			position: absolute;
+			aspect-ratio: 1;
+			border-radius: 50%;
+			background-color: $color-brand-red;
+			width: 14.37%;
+			right: 4.8%;
+			bottom: 21.8%;
+		}
+	}
+
+	nav {
+		display: flex;
+		align-items: center;
+		width: 46%;
+		height: 100%;
+	}
+	ul {
+		/* Scope list and links inside nav to avoid global resets */
+		list-style: none;
+		width: 100%;
+		height: 100%;
+		margin: 0;
+		padding: 0;
+		display: flex;
+		gap: 0.25rem;
+		align-items: center;
+		justify-content: space-between;
+	}
+	a {
+		position: relative;
+		padding: 0 0.09375rem;
+		color: inherit;
+		text-decoration: none;
+		display: block;
+		transition: color 0.15s ease, color 0.15s ease;
+		font-weight: 400;
+
+		&::after {
+			content: "";
+			position: absolute;
+			height: 0.1875rem;
+			left: 0;
+			bottom: -0.5rem;
+			width: 0;
+			background: $color-fg;
+			border-radius: 0.0625rem;
+			transition: width ease-in-out 300ms;
+		}
+		&:hover::after,
+		&:focus-visible::after,
+		&.active::after {
+			width: 100%;
+			outline: none !important;
+			border: none !important;
+			box-shadow: 0 0 0;
+		}
+	}
+	.nav-actions {
+		height: 100%;
+	}
+	.nav-login-btn {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 100%;
+		width: 12.3vw;
+		border-radius: 1.625rem;
+		background-color: $color-brand-yellow;
+		box-shadow: $shadow-light;
+		transition: box-shadow ease 400ms;
+		/* make the anchor fill the button so hover targets the full area */
+		a {
+			display: block;
+			width: 100%;
+			height: 100%;
+			text-align: center;
+			line-height: inherit;
+		}
+		&::after {
+			/* force-hide underline pseudo so global hover rules can't re-enable it */
+			display: none;
+		}
+		&:hover::after {
+			display: none;
+		}
+
+		&:hover,
+		&.active {
+			/* apply hover/active to the whole .login-btn element so it's easier to hit */
+			box-shadow: $shadow-combined;
+		}
+		&.active:hover {
+			box-shadow: $shadow-dark;
+		}
+	}
+}
+@media (max-width: 80rem) {
+	header {
+		font-size: 1.5625rem;
+	}
+}
+@media (max-width: 70rem) {
+	header {
+		.login-btn {
+			width: 9vw;
+		}
+		nav {
+			width: 50%;
+		}
+	}
+}
+@media (max-width: 56.25rem) {
+	header {
+		#nav-login-btn {
+			width: auto;
+			padding: 0 1.5em;
+		}
+	}
+}

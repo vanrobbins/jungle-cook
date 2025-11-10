@@ -1,13 +1,81 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>jungle-cook</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
-  </body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Jungle Cook</title>
+		<link rel="stylesheet" href="src/style.css" />
+		<link rel="stylesheet" href="src/util.css" />
+	</head>
+	<body>
+		<header>
+			<div id="logo">
+				<div class="oneCircLogo"></div>
+				<div class="twoCircLogo"></div>
+				<div class="threeCircLogo"></div>
+				<div class="fourCircLogo"></div>
+				<span class="logoText fontCaveat">The Jungle Cook</span>
+			</div>
+			<nav>
+				<ul class="nav-links">
+					<li><a href="#home">Home</a></li>
+					<li><a href="#browse">Browse</a></li>
+					<li><a href="#create-recipe">Create Recipe</a></li>
+					<li><a data-nav-login href="#login">Log In</a></li>
+				</ul>
+			</nav>
+			<div class="bg-overlay"></div>
+			<div class="hamburger-icon">
+				<div class="bar1"></div>
+				<div class="bar2"></div>
+				<div class="bar3"></div>
+			</div>
+			<ul class="mobile-menu">
+				<li><a href="#home">Home</a></li>
+				<li><a href="#browse">Browse</a></li>
+				<li><a href=".">Create Recipe</a></li>
+				<li><a data-nav-login href="#login">Log In</a></li>
+			</ul>
+		</header>
+		<div id="app"><!-- Dynamically load content here --></div>
+		<footer>
+			<div id="ft-copyright">
+				<span>Copyright © 2019 The Jungle Cook</span>
+			</div>
+
+			<div id="ft-links">
+				<!-- Footer login link uses data attribute so JS can toggle it without affecting CSS -->
+				<a data-nav-login href="#login">Log In</a>
+				<a href=".">Recipes by Category</a>
+				<a href=".">Privacy and Copyright</a>
+				<a href=".">Create Recipe</a>
+				<a href=".">Your Recipes</a>
+			</div>
+			<div id="ft-socials">
+				<a href="fb"
+					><svg class="social-icon" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path
+							d="M2.7832 19H8.98047V12.2461H6.75391V10.0195H8.98047V7.23633C8.98047 5.70165 10.229 4.45312 11.7637 4.45312H14.5469V6.67969H12.3203C11.7064 6.67969 11.207 7.17907 11.207 7.79297V10.0195H14.4464L14.0753 12.2461H11.207V19H16.2168C17.7515 19 19 17.7515 19 16.2168V2.7832C19 1.24853 17.7515 0 16.2168 0H2.7832C1.24853 0 0 1.24853 0 2.7832V16.2168C0 17.7515 1.24853 19 2.7832 19ZM1.11328 2.7832C1.11328 1.86243 1.86243 1.11328 2.7832 1.11328H16.2168C17.1376 1.11328 17.8867 1.86243 17.8867 2.7832V16.2168C17.8867 17.1376 17.1376 17.8867 16.2168 17.8867H12.3203V13.3594H15.0184L15.7606 8.90625H12.3203V7.79297H15.6602V3.33984H11.7637C9.6151 3.33984 7.86719 5.08775 7.86719 7.23633V8.90625H5.64062V13.3594H7.86719V17.8867H2.7832C1.86243 17.8867 1.11328 17.1376 1.11328 16.2168V2.7832Z"
+							fill="#393939"
+						/>
+					</svg>
+				</a>
+				<a href="ig"
+					><svg class="social-icon" viewBox="0 0 19 19" xmlns="http://www.w3.org/2000/svg">
+						<path
+							d="M13.0625 0H5.9375C2.65881 0 0 2.65881 0 5.9375V13.0625C0 16.3412 2.65881 19 5.9375 19H13.0625C16.3412 19 19 16.3412 19 13.0625V5.9375C19 2.65881 16.3412 0 13.0625 0ZM17.2188 13.0625C17.2188 15.3544 15.3544 17.2188 13.0625 17.2188H5.9375C3.64563 17.2188 1.78125 15.3544 1.78125 13.0625V5.9375C1.78125 3.64563 3.64563 1.78125 5.9375 1.78125H13.0625C15.3544 1.78125 17.2188 3.64563 17.2188 5.9375V13.0625Z"
+							fill="#393939"
+						/>
+						<path
+							d="M9.5 4.75C6.87682 4.75 4.75 6.87682 4.75 9.5C4.75 12.1232 6.87682 14.25 9.5 14.25C12.1232 14.25 14.25 12.1232 14.25 9.5C14.25 6.87682 12.1232 4.75 9.5 4.75ZM9.5 12.4688C7.86363 12.4688 6.53125 11.1364 6.53125 9.5C6.53125 7.86244 7.86363 6.53125 9.5 6.53125C11.1364 6.53125 12.4688 7.86244 12.4688 9.5C12.4688 11.1364 11.1364 12.4688 9.5 12.4688Z"
+							fill="#393939"
+						/>
+						<circle cx="14.6062" cy="4.39374" r="0.632937" fill="#393939" />
+					</svg>
+				</a>
+			</div>
+		</footer>
+		<script src="lib/jquery-3.7.1.min.js"></script>
+		<script type="module" src="src/app.js"></script>
+	</body>
 </html>

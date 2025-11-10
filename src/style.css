@@ -1,96 +1,788 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
+/* fonts partial
+   - Declares @font-face rules for local font files in public/fonts/
+   - Exposes SCSS variables for use across the project
+*/
+/* Lato local @font-face rules (files are in public/fonts/Lato/). Using local files
+   avoids network dependency and gives you control over formats. If you add
+   woff/woff2 files, prefer those for better performance. */
+@font-face {
+  font-family: "Lato";
+  src: url("../fonts/Lato/Lato-Thin.ttf") format("truetype");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Lato";
+  src: url("../fonts/Lato/Lato-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Lato";
+  src: url("../fonts/Lato/Lato-Regular.ttf") format("truetype");
   font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Lato";
+  src: url("../fonts/Lato/Lato-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Lato";
+  src: url("../fonts/Lato/Lato-Black.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+/* Italic / BoldItalic variants */
+@font-face {
+  font-family: "Lato";
+  src: url("../fonts/Lato/Lato-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Lato";
+  src: url("../fonts/Lato/Lato-BoldItalic.ttf") format("truetype");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Lato";
+  src: url("../fonts/Lato/Lato-ThinItalic.ttf") format("truetype");
+  font-weight: 100;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Caveat";
+  src: local("Caveat"), url("../fonts/Caveat-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Caveat";
+  src: local("Caveat Bold"), url("../fonts/Caveat-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+.fontCaveat {
+  font-family: "Caveat";
+}
 
+/* Color tokens exposed as CSS variables for runtime theming */
+:root {
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  /* Light palette */
+  --color-bg: #ffffff;
+  --color-bg-alt: #f0f2f5; /* subtle section background */
+  --color-bg-overlay: #c7eae460;
+  --color-surface: #ffffff; /* cards/raised */
+  --color-fg: #111318; /* softer than pure black */
+  --color-fg-muted: #393939; /* neutral-500 */
+  --color-fg-three: #ffffff;
+  --color-brand-blue: #c7eae4;
+  --color-brand-yellow: #ffd972;
+  --color-brand-green: #a7e8bd;
+  --color-brand-red: #efa7a7;
+  --color-brand-hero: #f25c5499;
+  --color-border: #d1d5db; /* neutral-300 */
+  --color-focus: #8fbac3; /* focus ring */
+  --color-shadow-dark: #00000030;
+  --color-shadow-light: #00000015;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Dark palette tuned for contrast and depth */
+    --color-bg: #0f1418;
+    --color-bg-alt: #141b20;
+    --color-bg-overlay: #c7eae460;
+    --color-surface: #18232b;
+    --color-fg: #111318; /* softer than pure black */
+    --color-fg-muted: #393939; /* neutral-500 */
+    --color-fg-three: #ffffff;
+    --color-brand-blue: #c7eae4;
+    --color-brand-yellow: #ffd972;
+    --color-brand-green: #a7e8bd;
+    --color-brand-red: #efa7a7;
+    --color-brand-hero: #f25c5499;
+    --color-border: #2a3a42;
+    --color-focus: #9ec6cf;
+    --color-shadow-dark: #00000030;
+    --color-shadow-light: #00000015;
+  }
 }
-a:hover {
-  color: #535bf2;
+.light-mode {
+  --color-bg: #ffffff;
+  --color-bg-alt: #f0f2f5; /* subtle section background */
+  --color-surface: #ffffff; /* cards/raised */
+  --color-fg: #111318; /* softer than pure black */
+  --color-fg-muted: #393939; /* neutral-500 */
+  --color-fg-three: #ffffff;
+  --color-accent: #587c83; /* brand teal */
+  --color-accent-muted: #587c8360; /* ~38% */
+  --color-hero-overlay: #587c8399;
+  --color-border: #d1d5db; /* neutral-300 */
+  --color-focus: #8fbac3; /* focus ring */
+  --color-shadow-dark: #00000030;
+  --color-shadow-light: #00000015;
 }
 
-body {
+.dark-mode {
+  --color-bg: #0f1418;
+  --color-bg-alt: #141b20;
+  --color-surface: #18232b;
+  --color-fg: #111318; /* softer than pure black */
+  --color-fg-muted: #393939; /* neutral-500 */
+  --color-fg-three: #ffffff;
+  --color-accent: #8fbac3;
+  --color-accent-muted: #8fbac359;
+  --color-hero-overlay: #8fbac399;
+  --color-border: #2a3a42;
+  --color-focus: #9ec6cf;
+  --color-shadow-dark: #00000030;
+  --color-shadow-light: #00000015;
+}
+
+/* Optional SCSS aliases so you can keep using $color-* in styles */
+* {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Lato", "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+html,
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--color-bg);
 }
 
 #app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  flex: 1;
+  display: flex; /* enables child flex behavior */
+  flex-direction: column;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vanilla:hover {
-  filter: drop-shadow(0 0 2em #f7df1eaa);
-}
-
-.card {
-  padding: 2em;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span {
+  margin-bottom: 1rem;
+  color: var(--color-fg);
+  letter-spacing: 10%;
 }
 
-.read-the-docs {
-  color: #888;
+li a {
+  font-family: "Caveat";
+  letter-spacing: 10%;
 }
 
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
+  color: var(--color-fg);
+  font-family: "Caveat";
+  padding: 0.4em 1em;
+  background-color: var(--color-brand-yellow);
+  border-radius: 1em;
+  box-shadow: 0px 12px 12px var(--color-shadow-light);
+  border: none;
+  transition: box-shadow ease 400ms;
+  letter-spacing: 10%;
 }
 button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  cursor: pointer;
+  box-shadow: 0px 4px 4px var(--color-shadow-dark), 0px 12px 12px var(--color-shadow-light);
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+header {
+  color: var(--color-fg);
+  margin-top: 2.5rem;
+  padding: 0 4vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  height: 3.4375rem;
+  font-size: 2rem;
+  font-weight: 400;
+  padding-bottom: 0.1rem;
+}
+header #logo {
+  align-self: flex-end;
+  height: 3.4375rem;
+  position: relative;
+  /* center the logo text horizontally and vertically */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+header #logo .logoText {
+  margin-bottom: 0;
+  position: relative; /* keep above absolute circles */
+  z-index: 3;
+}
+header #logo .oneCircLogo {
+  box-shadow: 0px 12px 12px var(--color-shadow-light);
+  position: absolute;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background-color: var(--color-brand-blue);
+  width: 19%;
+  top: 0;
+  left: 0;
+}
+header #logo .twoCircLogo {
+  box-shadow: 0px 12px 12px var(--color-shadow-light);
+  position: absolute;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background-color: var(--color-brand-yellow);
+  width: 18%;
+  bottom: 16.666666%;
+  left: 15.6%;
+}
+header #logo .threeCircLogo {
+  box-shadow: 0px 12px 12px var(--color-shadow-light);
+  position: absolute;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background-color: var(--color-brand-green);
+  height: 98%;
+  bottom: 0;
+  left: 31.75%;
+}
+header #logo .fourCircLogo {
+  box-shadow: 0px 12px 12px var(--color-shadow-light);
+  position: absolute;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background-color: var(--color-brand-red);
+  width: 14.37%;
+  right: 4.8%;
+  bottom: 21.8%;
+}
+header nav {
+  display: flex;
+  align-items: center;
+  width: 46%;
+  height: 100%;
+}
+header ul {
+  /* Scope list and links inside nav to avoid global resets */
+  list-style: none;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 0.25rem;
+  align-items: center;
+  justify-content: space-between;
+}
+header a {
+  position: relative;
+  padding: 0 0.09375rem;
+  color: inherit;
+  text-decoration: none;
+  display: block;
+  transition: color 0.15s ease, color 0.15s ease;
+  font-weight: 400;
+}
+header a::after {
+  content: "";
+  position: absolute;
+  height: 0.1875rem;
+  left: 0;
+  bottom: -0.5rem;
+  width: 0;
+  background: var(--color-fg);
+  border-radius: 0.0625rem;
+  transition: width ease-in-out 300ms;
+}
+header a:hover::after, header a:focus-visible::after, header a.active::after {
+  width: 100%;
+  outline: none !important;
+  border: none !important;
+  box-shadow: 0 0 0;
+}
+header .nav-actions {
+  height: 100%;
+}
+header .nav-login-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 12.3vw;
+  border-radius: 1.625rem;
+  background-color: var(--color-brand-yellow);
+  box-shadow: 0px 12px 12px var(--color-shadow-light);
+  transition: box-shadow ease 400ms;
+  /* make the anchor fill the button so hover targets the full area */
+}
+header .nav-login-btn a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  line-height: inherit;
+}
+header .nav-login-btn::after {
+  /* force-hide underline pseudo so global hover rules can't re-enable it */
+  display: none;
+}
+header .nav-login-btn:hover::after {
+  display: none;
+}
+header .nav-login-btn:hover, header .nav-login-btn.active {
+  /* apply hover/active to the whole .login-btn element so it's easier to hit */
+  box-shadow: 0px 4px 4px var(--color-shadow-dark), 0px 12px 12px var(--color-shadow-light);
+}
+header .nav-login-btn.active:hover {
+  box-shadow: 0px 4px 4px var(--color-shadow-dark);
+}
+
+@media (max-width: 80rem) {
+  header {
+    font-size: 1.5625rem;
   }
-  a:hover {
-    color: #747bff;
+}
+@media (max-width: 70rem) {
+  header .login-btn {
+    width: 9vw;
   }
-  button {
-    background-color: #f9f9f9;
+  header nav {
+    width: 50%;
+  }
+}
+@media (max-width: 56.25rem) {
+  header #nav-login-btn {
+    width: auto;
+    padding: 0 1.5em;
+  }
+}
+/* Hamburger icon and mobile menu (fix typos and transitions) */
+.hamburger-icon {
+  display: none; /* shown only on small screens */
+  margin: 0;
+  cursor: pointer;
+  z-index: 40;
+}
+
+.hamburger-icon div {
+  width: 2rem;
+  height: 3px;
+  background-color: var(--color-fg);
+  margin: 6px 3px;
+  transition: 0.4s;
+}
+
+.bg-overlay {
+  /* make overlay cover the viewport and not depend on a positioned ancestor */
+  position: fixed;
+  inset: 0; /* top:0; right:0; bottom:0; left:0 */
+  display: none;
+  opacity: 0;
+  background-color: var(--color-bg-overlay);
+  transition: opacity ease-in 400ms;
+  z-index: 25; /* sit behind the mobile menu (z-index:30) */
+}
+
+.open .bg-overlay {
+  display: block;
+  opacity: 1;
+}
+.open .bar1 {
+  /* Open state transforms for three bars */
+  transform: rotate(45deg) translate(6px, 6px);
+}
+.open .bar2 {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+.open .bar3 {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+.open .mobile-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  justify-content: flex-start;
+  opacity: 1;
+}
+.open .mobile-menu .login-btn {
+  height: 2.5rem;
+}
+
+.mobile-menu {
+  display: none;
+  opacity: 0;
+  position: absolute;
+  top: 50px;
+  left: 0;
+  height: calc(100vh - 50px);
+  padding-top: 8px;
+  z-index: 30;
+  transition: opacity ease 400ms;
+}
+
+@media only screen and (max-width: 56.25rem) {
+  header nav {
+    display: none;
+  }
+  /* show the hamburger (use class selector - matches the HTML) */
+  .hamburger-icon {
+    display: block;
+  }
+}
+footer {
+  width: 100%;
+  height: 5.75rem;
+  justify-content: space-between;
+  display: flex;
+  flex: 0 0 auto;
+  padding: 1.5625rem 3.125vw;
+  background-color: var(--color-accent);
+  color: var(--color-fg-muted);
+  font-size: 1.125rem;
+  font-weight: 400;
+}
+footer #ft-copyright {
+  font-size: inherit;
+  font-weight: inherit;
+  font-style: italic;
+  display: flex;
+  align-items: center;
+  letter-spacing: 10%;
+}
+footer #ft-copyright span {
+  color: var(--color-fg-muted);
+  margin: 0;
+}
+footer #ft-links {
+  display: flex;
+  align-items: center;
+  gap: 1.98vw;
+}
+footer #ft-links a {
+  font-size: inherit;
+  font-weight: inherit;
+  position: relative;
+  text-decoration: none;
+  font-style: italic;
+  color: var(--color-fg-muted);
+  letter-spacing: 10%;
+}
+footer #ft-links a::after {
+  content: "";
+  position: absolute;
+  height: 0.1em;
+  left: 0;
+  bottom: -0.15rem;
+  width: 0;
+  background: var(--color-fg-muted);
+  transition: width ease-in-out 300ms;
+}
+footer #ft-links a:hover::after,
+footer #ft-links a:focus-visible::after,
+footer #ft-links a.active::after {
+  width: 100%;
+  outline: none !important;
+  border: none !important;
+  box-shadow: 0 0 0;
+}
+footer #ft-socials {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+}
+footer #ft-socials a {
+  height: 1.1875rem;
+}
+footer #ft-socials .social-icon {
+  fill: var(--color-fg-muted);
+  height: 1.1875rem;
+  width: 1.1875rem;
+}
+
+@media (max-width: 80rem) {
+  footer {
+    font-size: 0.9375rem;
+  }
+}
+@media (max-width: 70rem) {
+  footer {
+    padding: 1.6875rem 2.6vw;
+    font-size: 0.625rem;
+  }
+}
+@media (max-width: 54rem) {
+  footer #ft-links {
+    gap: 1.25vw;
+  }
+  footer #ft-socials {
+    gap: 1.25rem;
+  }
+}
+@media (max-width: 48rem) {
+  footer {
+    /* allow items to wrap into multiple rows */
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    /* keep copyright and socials on the top row */
+  }
+  footer #ft-copyright,
+  footer #ft-socials {
+    order: 1;
+    flex: 0 1 auto;
+  }
+  footer #ft-socials {
+    /* push socials to the right on the top row */
+    margin-left: auto;
+  }
+  footer #ft-links {
+    /* place links on their own centered row below */
+    order: 2;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+  }
+}
+/* Selects a parent with the class 'parent' if it contains a child with the class 'child' */
+body:has(#home) {
+  max-height: 100vh;
+  background-image: linear-gradient(var(--color-brand-hero), var(--color-brand-hero)), url("../images/hero.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+#home {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.circle-container {
+  position: relative;
+  width: 34.5vw;
+  aspect-ratio: 442/401.68;
+}
+
+.big-circle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.875rem;
+  position: absolute;
+  bottom: 0;
+  width: 81%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background-color: var(--color-brand-yellow);
+  box-shadow: 0px 4px 4px var(--color-shadow-dark), 0px 12px 12px var(--color-shadow-light);
+  overflow: hidden;
+}
+.big-circle h1 {
+  font-weight: 700;
+  font-size: 1.875rem;
+  letter-spacing: 10%;
+  margin: 0;
+}
+.big-circle span {
+  text-align: center;
+  font-weight: 400;
+  font-style: Italic;
+  font-size: 1.125rem;
+  letter-spacing: 10%;
+  text-align: center;
+  color: var(--color-fg);
+  max-width: 46%;
+  margin: 0;
+}
+
+.small-circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 0;
+  width: 38%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background-color: var(--color-brand-red);
+  box-shadow: 0px 4px 4px var(--color-shadow-dark), 0px 12px 12px var(--color-shadow-light);
+  overflow: hidden;
+}
+.small-circle span {
+  max-width: 62.5%;
+  font-weight: 400;
+  font-style: Italic;
+  font-size: 0.8125rem;
+  letter-spacing: 10%;
+  text-align: center;
+  color: var(--color-fg);
+  margin-bottom: 0.75rem;
+  padding-left: 0.25rem;
+}
+
+@media (max-width: 80rem) {
+  .big-circle h1 {
+    font-size: 1.5rem;
+  }
+  .big-circle span {
+    font-size: 0.8125rem;
+  }
+  .small-circle span {
+    font-size: 0.625rem;
+  }
+}
+@media (max-width: 70rem) {
+  .circle-container {
+    width: 46.5vw;
+    aspect-ratio: 357.58/453.58;
+  }
+  .circle-container h1 {
+    font-size: 1.875rem;
+  }
+  .circle-container span {
+    font-size: 1.125rem;
+  }
+  .big-circle {
+    width: 100%;
+  }
+  .small-circle {
+    width: 47%;
+  }
+  .small-circle span {
+    font-size: 0.8125rem;
+    margin-bottom: 1rem;
+  }
+}
+@media (max-width: 45rem) {
+  .circle-container {
+    width: 60vw;
+    aspect-ratio: 257.81/327.02;
+  }
+  .big-circle h1 {
+    font-size: 1.5rem;
+  }
+  .big-circle span {
+    font-size: 0.8125rem;
+  }
+  .small-circle span {
+    font-size: 0.625rem;
+  }
+}
+@media (max-width: 30rem) {
+  .circle-container {
+    width: 72vw;
+    aspect-ratio: 257.81/327.02;
+  }
+}
+body:has(#login) {
+  background-color: var(--color-brand-yellow);
+  background-size: cover;
+  background-position: center;
+}
+
+#login {
+  display: flex;
+  flex: 1;
+  justify-content: space-evenly;
+  align-items: center;
+  color: var(--color-fg);
+}
+#login span {
+  margin-bottom: 0.25rem;
+}
+#login h1 {
+  margin-bottom: 3.75rem;
+  font-size: 2rem;
+  letter-spacing: 10%;
+}
+#login label {
+  margin-bottom: 0.25rem;
+}
+#login input {
+  color: var(--color-fg);
+  background: transparent;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  margin-bottom: 2.25rem;
+  padding-left: 0.1ch;
+}
+#login button {
+  font-size: 2rem;
+  width: 100%;
+}
+
+.login-forms {
+  display: flex;
+  flex-direction: column;
+}
+
+#loginForm {
+  width: 16.4vw;
+}
+
+#signupForm {
+  width: 19.5vw;
+}
+
+@media (max-width: 80rem) {
+  #login h1 {
+    font-size: 1.875rem;
+  }
+  #login span {
+    font-size: 0.75rem;
+  }
+  #login button {
+    font-size: 1.5625rem;
+  }
+}
+@media (max-width: 56.25rem) {
+  #login {
+    flex-direction: column;
+    gap: 7.1875rem;
+  }
+  .login-forms {
+    width: 25.5vw !important;
+  }
+  #loginForm {
+    margin-top: 6.375rem;
+  }
+  #signupForm {
+    margin-bottom: 8.125rem;
+  }
+}
+@media (max-width: 37.5rem) {
+  .login-forms {
+    width: 53.6vw !important;
   }
 }

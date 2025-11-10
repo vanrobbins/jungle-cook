@@ -1,0 +1,96 @@
+/* fonts partial
+   - Declares @font-face rules for local font files in public/fonts/
+   - Exposes SCSS variables for use across the project
+*/
+
+/* Lato local @font-face rules (files are in public/fonts/Lato/). Using local files
+   avoids network dependency and gives you control over formats. If you add
+   woff/woff2 files, prefer those for better performance. */
+
+@font-face {
+	font-family: "Lato";
+	src: url("../fonts/Lato/Lato-Thin.ttf") format("truetype");
+	font-weight: 100;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Lato";
+	src: url("../fonts/Lato/Lato-Light.ttf") format("truetype");
+	font-weight: 300;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Lato";
+	src: url("../fonts/Lato/Lato-Regular.ttf") format("truetype");
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Lato";
+	src: url("../fonts/Lato/Lato-Bold.ttf") format("truetype");
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Lato";
+	src: url("../fonts/Lato/Lato-Black.ttf") format("truetype");
+	font-weight: 900;
+	font-style: normal;
+	font-display: swap;
+}
+
+/* Italic / BoldItalic variants */
+@font-face {
+	font-family: "Lato";
+	src: url("../fonts/Lato/Lato-Italic.ttf") format("truetype");
+	font-weight: 400;
+	font-style: italic;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Lato";
+	src: url("../fonts/Lato/Lato-BoldItalic.ttf") format("truetype");
+	font-weight: 700;
+	font-style: italic;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Lato";
+	src: url("../fonts/Lato/Lato-ThinItalic.ttf") format("truetype");
+	font-weight: 100;
+	font-style: italic;
+	font-display: swap;
+}
+
+$font-sans: "Lato", "Gill Sans", "Segoe UI", Tahoma, Arial, sans-serif !default;
+$font-display: "Caveat", $font-sans !default;
+
+@font-face {
+	font-family: "Caveat";
+	src: local("Caveat"), url("../fonts/Caveat-Regular.ttf") format("truetype");
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Caveat";
+	src: local("Caveat Bold"), url("../fonts/Caveat-Bold.ttf") format("truetype");
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+}
+
+.fontCaveat {
+	font-family: "Caveat";
+}

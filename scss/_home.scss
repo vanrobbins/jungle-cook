@@ -1,0 +1,138 @@
+@use "colors" as *;
+@use "shadows" as *;
+/* Selects a parent with the class 'parent' if it contains a child with the class 'child' */
+body:has(#home) {
+	max-height: 100vh;
+	background-image: linear-gradient($color-brand-hero, $color-brand-hero), url("../images/hero.jpg");
+	background-size: cover;
+	background-position: center;
+}
+#home {
+	flex: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.circle-container {
+	position: relative;
+	width: 34.5vw;
+	aspect-ratio: 442/401.68;
+}
+.big-circle {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 1.875rem;
+	position: absolute;
+	bottom: 0;
+	width: 81%;
+	aspect-ratio: 1;
+	border-radius: 50%;
+	background-color: $color-brand-yellow;
+	box-shadow: $shadow-combined;
+	overflow: hidden;
+	h1 {
+		font-weight: 700;
+		font-size: 1.875rem;
+		letter-spacing: 10%;
+		margin: 0;
+	}
+	span {
+		text-align: center;
+		font-weight: 400;
+		font-style: Italic;
+		font-size: 1.125rem;
+		letter-spacing: 10%;
+		text-align: center;
+		color: $color-fg;
+		max-width: 46%;
+		margin: 0;
+	}
+}
+.small-circle {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	right: 0;
+	width: 38%;
+	aspect-ratio: 1;
+	border-radius: 50%;
+	background-color: $color-brand-red;
+	box-shadow: $shadow-combined;
+	overflow: hidden;
+	span {
+		max-width: 62.5%;
+		font-weight: 400;
+		font-style: Italic;
+		font-size: 0.8125rem;
+		letter-spacing: 10%;
+		text-align: center;
+		color: $color-fg;
+		margin-bottom: 0.75rem;
+		padding-left: 0.25rem;
+	}
+}
+@media (max-width: 80rem) {
+	.big-circle {
+		h1 {
+			font-size: 1.5rem;
+		}
+		span {
+			font-size: 0.8125rem;
+		}
+	}
+	.small-circle {
+		span {
+			font-size: 0.625rem;
+		}
+	}
+}
+@media (max-width: 70rem) {
+	.circle-container {
+		width: 46.5vw;
+		aspect-ratio: 357.58/453.58;
+		h1 {
+			font-size: 1.875rem;
+		}
+		span {
+			font-size: 1.125rem;
+		}
+	}
+	.big-circle {
+		width: 100%;
+	}
+	.small-circle {
+		width: 47%;
+		span {
+			font-size: 0.8125rem;
+			margin-bottom: 1rem;
+		}
+	}
+}
+@media (max-width: 45rem) {
+	.circle-container {
+		width: 60vw;
+		aspect-ratio: 257.81/327.02;
+	}
+	.big-circle {
+		h1 {
+			font-size: 1.5rem;
+		}
+		span {
+			font-size: 0.8125rem;
+		}
+	}
+	.small-circle {
+		span {
+			font-size: 0.625rem;
+		}
+	}
+}
+@media (max-width: 30rem) {
+	.circle-container {
+		width: 72vw;
+		aspect-ratio: 257.81/327.02;
+	}
+}

@@ -1,0 +1,6 @@
+@use "colors" as *;
+
+$shadow-combined: 0px 4px 4px $color-shadow-dark, 0px 12px 12px $color-shadow-light;
+
+$shadow-dark: 0px 4px 4px $color-shadow-dark;
+$shadow-light: 0px 12px 12px $color-shadow-light;

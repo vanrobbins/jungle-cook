@@ -1,0 +1,95 @@
+/* Color tokens exposed as CSS variables for runtime theming */
+:root {
+	color-scheme: light dark;
+
+	/* Light palette */
+	--color-bg: #ffffff;
+	--color-bg-alt: #f0f2f5; /* subtle section background */
+	--color-bg-overlay: #c7eae460;
+	--color-surface: #ffffff; /* cards/raised */
+	--color-fg: #111318; /* softer than pure black */
+	--color-fg-muted: #393939; /* neutral-500 */
+	--color-fg-three: #ffffff;
+	--color-brand-blue: #c7eae4;
+	--color-brand-yellow: #ffd972;
+	--color-brand-green: #a7e8bd;
+	--color-brand-red: #efa7a7;
+	--color-brand-hero: #f25c5499;
+	--color-border: #d1d5db; /* neutral-300 */
+	--color-focus: #8fbac3; /* focus ring */
+	--color-shadow-dark: #00000030;
+	--color-shadow-light: #00000015;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		/* Dark palette tuned for contrast and depth */
+		--color-bg: #0f1418;
+		--color-bg-alt: #141b20;
+		--color-bg-overlay: #c7eae460;
+		--color-surface: #18232b;
+		--color-fg: #111318; /* softer than pure black */
+		--color-fg-muted: #393939; /* neutral-500 */
+		--color-fg-three: #ffffff;
+		--color-brand-blue: #c7eae4;
+		--color-brand-yellow: #ffd972;
+		--color-brand-green: #a7e8bd;
+		--color-brand-red: #efa7a7;
+		--color-brand-hero: #f25c5499;
+		--color-border: #2a3a42;
+		--color-focus: #9ec6cf;
+		--color-shadow-dark: #00000030;
+		--color-shadow-light: #00000015;
+	}
+}
+
+.light-mode {
+	--color-bg: #ffffff;
+	--color-bg-alt: #f0f2f5; /* subtle section background */
+	--color-surface: #ffffff; /* cards/raised */
+	--color-fg: #111318; /* softer than pure black */
+	--color-fg-muted: #393939; /* neutral-500 */
+	--color-fg-three: #ffffff;
+	--color-accent: #587c83; /* brand teal */
+	--color-accent-muted: #587c8360; /* ~38% */
+	--color-hero-overlay: #587c8399;
+	--color-border: #d1d5db; /* neutral-300 */
+	--color-focus: #8fbac3; /* focus ring */
+	--color-shadow-dark: #00000030;
+	--color-shadow-light: #00000015;
+}
+.dark-mode {
+	--color-bg: #0f1418;
+	--color-bg-alt: #141b20;
+	--color-surface: #18232b;
+	--color-fg: #111318; /* softer than pure black */
+	--color-fg-muted: #393939; /* neutral-500 */
+	--color-fg-three: #ffffff;
+	--color-accent: #8fbac3;
+	--color-accent-muted: #8fbac359;
+	--color-hero-overlay: #8fbac399;
+	--color-border: #2a3a42;
+	--color-focus: #9ec6cf;
+	--color-shadow-dark: #00000030;
+	--color-shadow-light: #00000015;
+}
+/* Optional SCSS aliases so you can keep using $color-* in styles */
+$color-bg: var(--color-bg);
+$color-bg-alt: var(--color-bg-alt);
+$color-bg-overlay: var(--color-bg-overlay);
+$color-surface: var(--color-surface);
+$color-fg: var(--color-fg);
+$color-fg-muted: var(--color-fg-muted);
+$color-fg-three: var(--color-fg-three);
+$color-accent: var(--color-accent);
+$color-accent-muted: var(--color-accent-muted);
+$color-hero-overlay: var(--color-hero-overlay);
+$color-brand-blue: var(--color-brand-blue);
+$color-brand-yellow: var(--color-brand-yellow);
+$color-brand-green: var(--color-brand-green);
+$color-brand-red: var(--color-brand-red);
+$color-brand-hero: var(--color-brand-hero);
+$color-border: var(--color-border);
+$color-focus: var(--color-focus);
+$color-shadow-dark: var(--color-shadow-dark);
+$color-shadow-light: var(--color-shadow-light);
